@@ -37,12 +37,13 @@ class Arena():
         curPlayer = 1
         board = self.game.getInitBoard()
         it = 0
+        action = None
         while self.game.getGameEnded(board, curPlayer)==0:
             it+=1
             if verbose:
                 assert(self.display)
-                print("Turn ", str(it), "Player ", str(curPlayer))
-                self.display(board)
+                print("Turn ", str(it), "Player ", str(curPlayer),"\n")
+                self.display(board,action)
             action = players[curPlayer+1](self.game.getCanonicalForm(board, curPlayer))
 
             valids = self.game.getValidMoves(self.game.getCanonicalForm(board, curPlayer),1)
